@@ -72,30 +72,50 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           onPressed: () {
             print('FloatingActionButton pressed ...');
           },
-          backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           elevation: 8,
-          child: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
-            icon: Icon(
-              Icons.shopping_cart,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 30,
-            ),
-            onPressed: () async {
-              context.goNamed(
-                'Cart',
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
+          child: Stack(
+            children: [
+              FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30,
+                borderWidth: 1,
+                buttonSize: 60,
+                icon: Icon(
+                  Icons.shopping_cart,
+                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  context.goNamed(
+                    'Cart',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
-              );
-            },
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.7, -1),
+                child: Text(
+                  FFAppState().Cart.length.toString(),
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                        fontFamily: 'Acme',
+                        color: Color(0xFFFF4F01),
+                        fontSize: 18,
+                        letterSpacing: 0,
+                        fontWeight: FontWeight.w800,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText2Family),
+                      ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

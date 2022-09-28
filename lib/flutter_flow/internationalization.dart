@@ -118,7 +118,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'మీ భాషను ఎంచుకోండి',
     },
     'rwhzcgq0': {
-      'en': '',
+      'en': 'English',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -126,7 +126,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'u8kfq2ut': {
-      'en': '',
+      'en': 'తెలుగు',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -134,7 +134,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'w59ly3ty': {
-      'en': '',
+      'en': 'Telugu',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -142,7 +142,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'xg0g4sr3': {
-      'en': '',
+      'en': 'ಕನ್ನಡ',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -150,7 +150,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'xh7q6jt3': {
-      'en': '',
+      'en': 'Kannada',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -158,7 +158,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'p02n23u6': {
-      'en': '',
+      'en': 'தமிழ்',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -166,7 +166,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     '86pkktnk': {
-      'en': '',
+      'en': 'Tamil',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -174,7 +174,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'ufkzikph': {
-      'en': '',
+      'en': 'हिन्दी',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -182,7 +182,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     '0fm0zaus': {
-      'en': '',
+      'en': 'Hindi',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -190,7 +190,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     '8p4wtyfr': {
-      'en': '',
+      'en': 'മലയാളം',
       'hi': '',
       'kn': '',
       'ml': '',
@@ -198,7 +198,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'er6qex90': {
-      'en': '',
+      'en': 'Malayalam',
       'hi': '',
       'kn': '',
       'ml': '',

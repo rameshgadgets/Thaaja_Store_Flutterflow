@@ -102,6 +102,8 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                       ),
                                     },
                                   );
+
+                                  setAppLanguage(context, 'en');
                                 },
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -109,7 +111,7 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'rwhzcgq0' /*  */,
+                                        'rwhzcgq0' /* English */,
                                       ),
                                       textAlign: TextAlign.center,
                                       style:
@@ -156,14 +158,14 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'u8kfq2ut' /*  */,
+                                      'u8kfq2ut' /* తెలుగు */,
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context).title1,
                                   ),
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'w59ly3ty' /*  */,
+                                      'w59ly3ty' /* Telugu */,
                                     ),
                                     style: FlutterFlowTheme.of(context).title3,
                                   ),
@@ -216,14 +218,14 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'xg0g4sr3' /*  */,
+                                      'xg0g4sr3' /* ಕನ್ನಡ */,
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context).title1,
                                   ),
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'xh7q6jt3' /*  */,
+                                      'xh7q6jt3' /* Kannada */,
                                     ),
                                     style: FlutterFlowTheme.of(context).title3,
                                   ),
@@ -267,14 +269,14 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'p02n23u6' /*  */,
+                                      'p02n23u6' /* தமிழ் */,
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context).title1,
                                   ),
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      '86pkktnk' /*  */,
+                                      '86pkktnk' /* Tamil */,
                                     ),
                                     style: FlutterFlowTheme.of(context).title3,
                                   ),
@@ -327,14 +329,14 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'ufkzikph' /*  */,
+                                      'ufkzikph' /* हिन्दी */,
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context).title1,
                                   ),
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      '0fm0zaus' /*  */,
+                                      '0fm0zaus' /* Hindi */,
                                     ),
                                     style: FlutterFlowTheme.of(context).title3,
                                   ),
@@ -342,39 +344,55 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                               ),
                             ),
                           ),
-                          Container(
-                            width: 150,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4,
-                                  color: Color(0x33000000),
-                                  offset: Offset(0, 2),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    '8p4wtyfr' /*  */,
+                          InkWell(
+                            onTap: () async {
+                              context.pushNamed(
+                                'HomePage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.rightToLeft,
                                   ),
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context).title1,
-                                ),
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'er6qex90' /*  */,
+                                },
+                              );
+
+                              setAppLanguage(context, 'ml');
+                            },
+                            child: Container(
+                              width: 150,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4,
+                                    color: Color(0x33000000),
+                                    offset: Offset(0, 2),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      '8p4wtyfr' /* മലയാളം */,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context).title1,
                                   ),
-                                  style: FlutterFlowTheme.of(context).title3,
-                                ),
-                              ],
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'er6qex90' /* Malayalam */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context).title3,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
