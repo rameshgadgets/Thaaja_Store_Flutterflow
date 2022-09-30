@@ -303,7 +303,7 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'hlm4apus' /* $156.00 */,
+                              'hlm4apus' /* 120 */,
                             ),
                             style: FlutterFlowTheme.of(context).subtitle1,
                           ),

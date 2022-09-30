@@ -281,7 +281,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'బేస్ ధర',
     },
     'hlm4apus': {
-      'en': '\$156.00',
+      'en': '120',
       'hi': '\$156.00',
       'kn': '\$156.00',
       'ml': '\$156.00',
