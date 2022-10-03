@@ -2,6 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'auth/firebase_user_provider.dart';
+import 'auth/auth_util.dart';
+
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -32,19 +35,31 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
+  late Stream<ThaajaStoresFirebaseUser> userStream;
+
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
-  bool displaySplashImage = true;
+  final authUserSub = authenticatedUserStream.listen((_) {});
 
   @override
   void initState() {
     super.initState();
     _appStateNotifier = AppStateNotifier();
     _router = createRouter(_appStateNotifier);
+    userStream = thaajaStoresFirebaseUserStream()
+      ..listen((user) => _appStateNotifier.update(user));
+    Future.delayed(
+      Duration(seconds: 1),
+      () => _appStateNotifier.stopShowingSplashImage(),
+    );
+  }
 
-    Future.delayed(Duration(seconds: 1),
-        () => setState(() => _appStateNotifier.stopShowingSplashImage()));
+  @override
+  void dispose() {
+    authUserSub.cancel();
+
+    super.dispose();
   }
 
   void setLocale(String language) =>
@@ -108,7 +123,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'LoginPage': LoginPageWidget(),
+      'ProfilePage': ProfilePageWidget(),
       'Cart': CartWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -139,11 +154,11 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.tag_faces,
+              Icons.account_circle_outlined,
               size: 24,
             ),
             label: FFLocalizations.of(context).getText(
-              'ro0ez8gx' /* Home */,
+              'l07jbtaw' /* __ */,
             ),
             tooltip: '',
           ),
