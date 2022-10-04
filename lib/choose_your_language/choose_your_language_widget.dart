@@ -59,7 +59,7 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                     FlutterFlowTheme.of(context).title1Family),
                               ),
                           colors: [
-                            FlutterFlowTheme.of(context).secondaryColor,
+                            Color(0xFFBCB013),
                             FlutterFlowTheme.of(context).primaryBtnText
                           ],
                           gradientDirection: GradientDirection.ltr,
