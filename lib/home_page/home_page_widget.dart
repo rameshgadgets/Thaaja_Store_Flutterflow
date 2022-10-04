@@ -6,7 +6,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'package:draggable_fab/draggable_fab.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -17,8 +16,6 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int _count = 0;
-  bool _isAddBtnTapped = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +65,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      // floatingActionButton: Visibility(
-      //   visible: FFAppState().Cart.length >= 1,
-      floatingActionButton: DraggableFab(
+      floatingActionButton: Visibility(
+        visible: FFAppState().Cart.length >= 1,
         child: FloatingActionButton(
           onPressed: () {
             print('FloatingActionButton pressed ...');
@@ -335,143 +330,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               ),
                                               InkWell(
                                                 onTap: () async {
-                                                  setState(() {
-                                                    _isAddBtnTapped = true;
-                                                    FFAppState().addToCart(
-                                                        gridViewVegetablesRecord
-                                                            .reference);
-                                                  });
+                                                  setState(() => FFAppState()
+                                                      .addToCart(
+                                                          gridViewVegetablesRecord
+                                                              .reference));
                                                 },
-                                                child: Stack(children: <Widget>[
-                                                  Container(
-                                                    width: double.infinity,
-                                                    height: 40,
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryColor,
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(10),
-                                                        bottomRight:
-                                                            Radius.circular(10),
-                                                        topLeft:
-                                                            Radius.circular(0),
-                                                        topRight:
-                                                            Radius.circular(0),
-                                                      ),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'fjiezwmo' /* ADD */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .subtitle2
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .subtitle2Family,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .subtitle2Family),
-                                                              ),
-                                                        ),
-                                                        Icon(
-                                                          Icons.add,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBtnText,
-                                                          size: 24,
-                                                        ),
-                                                      ],
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 40,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(10),
+                                                      bottomRight:
+                                                          Radius.circular(10),
+                                                      topLeft:
+                                                          Radius.circular(0),
+                                                      topRight:
+                                                          Radius.circular(0),
                                                     ),
                                                   ),
-                                                  Visibility(
-                                                      visible: _isAddBtnTapped,
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        height: 40,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryColor,
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    10),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    10),
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    0),
-                                                          ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'fjiezwmo' /* ADD */,
                                                         ),
-                                                        child: new Center(
-                                                          child: new Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: <Widget>[
-                                                              IconButton(
-                                                                icon: const Icon(
-                                                                    Icons
-                                                                        .remove),
-                                                                color: Colors
-                                                                    .white,
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    _count--;
-                                                                  });
-                                                                },
-                                                              ),
-                                                              new Text(
-                                                                  gridViewVegetablesRecord
-                                                                      .minCount!
-                                                                      .toString(),
-                                                                  style: new TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          14.0)),
-                                                              IconButton(
-                                                                icon: const Icon(
-                                                                    Icons.add),
-                                                                color: Colors
-                                                                    .white,
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    _count++;
-                                                                  });
-                                                                },
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      )),
-                                                ]),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle2
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .subtitle2Family,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBtnText,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .subtitle2Family),
+                                                                ),
+                                                      ),
+                                                      Icon(
+                                                        Icons.add,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        size: 24,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),

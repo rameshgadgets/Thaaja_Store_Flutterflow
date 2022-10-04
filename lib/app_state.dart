@@ -38,6 +38,10 @@ class FFAppState {
     _Cart.remove(_value);
     prefs.setStringList('ff_Cart', _Cart.map((x) => x.path).toList());
   }
+
+  bool isEditBtnTapped = false;
+
+  int quantity = 0;
 }
 
 LatLng? _latLngFromString(String? val) {

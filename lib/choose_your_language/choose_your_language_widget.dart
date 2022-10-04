@@ -19,8 +19,21 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
+      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              FlutterFlowTheme.of(context).primaryColor,
+              FlutterFlowTheme.of(context).primaryBtnText
+            ],
+            stops: [0, 1],
+            begin: AlignmentDirectional(0, -1),
+            end: AlignmentDirectional(0, 1),
+          ),
+        ),
         child: Stack(
           children: [
             Align(
@@ -46,8 +59,8 @@ class _ChooseYourLanguageWidgetState extends State<ChooseYourLanguageWidget> {
                                     FlutterFlowTheme.of(context).title1Family),
                               ),
                           colors: [
-                            FlutterFlowTheme.of(context).primaryColor,
-                            Color(0xFFFF4F01)
+                            FlutterFlowTheme.of(context).secondaryColor,
+                            FlutterFlowTheme.of(context).primaryBtnText
                           ],
                           gradientDirection: GradientDirection.ltr,
                           gradientType: GradientType.linear,
