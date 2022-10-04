@@ -391,11 +391,9 @@ class _CartWidgetState extends State<CartWidget> {
                                                                           0,
                                                                           0),
                                                               child: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'zlpe1qm4' /*  */,
-                                                                ),
+                                                                containerVegetablesRecord
+                                                                    .minCount!
+                                                                    .toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1,

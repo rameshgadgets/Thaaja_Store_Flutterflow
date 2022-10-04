@@ -272,14 +272,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
       'te': '',
     },
-    'zlpe1qm4': {
-      'en': '',
-      'hi': '',
-      'kn': '',
-      'ml': '',
-      'ta': '',
-      'te': '',
-    },
     '30tlit86': {
       'en': 'Controller Basic',
       'hi': 'नियंत्रक मूल',
