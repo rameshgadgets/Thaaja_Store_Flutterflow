@@ -40,8 +40,6 @@ class FFAppState {
   }
 
   bool isEditBtnTapped = false;
-
-  int quantity = 0;
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -82,16 +82,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomePageWidget(),
             ),
             FFRoute(
-              name: 'ChooseYourLanguage',
-              path: 'chooseYourLanguage',
-              builder: (context, params) => ChooseYourLanguageWidget(),
-            ),
-            FFRoute(
               name: 'ProfilePage',
               path: 'profilePage',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'ProfilePage')
                   : ProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'ChooseYourLanguage',
+              path: 'chooseYourLanguage',
+              builder: (context, params) => ChooseYourLanguageWidget(),
             ),
             FFRoute(
               name: 'Cart',

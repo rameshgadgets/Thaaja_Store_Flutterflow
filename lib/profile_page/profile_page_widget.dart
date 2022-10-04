@@ -261,40 +261,42 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(60),
-                      child: Image.network(
-                        'https://picsum.photos/seed/470/600',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
+                    child: AuthUserStreamWidget(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(60),
+                        child: Image.network(
+                          currentUserPhoto,
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
                 ).animated([animationsMap['cardOnPageLoadAnimation']!]),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      's4lijhrx' /* Andrea Davis */,
-                    ),
-                    style: FlutterFlowTheme.of(context).title3,
-                  ).animated([animationsMap['textOnPageLoadAnimation1']!]),
+                  child: AuthUserStreamWidget(
+                    child: Text(
+                      currentUserDisplayName,
+                      style: FlutterFlowTheme.of(context).title3,
+                    ).animated([animationsMap['textOnPageLoadAnimation1']!]),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      'atj5slss' /* andrea@domainname.com */,
-                    ),
-                    style: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).subtitle2Family,
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle2Family),
-                        ),
-                  ).animated([animationsMap['textOnPageLoadAnimation2']!]),
+                  child: AuthUserStreamWidget(
+                    child: Text(
+                      valueOrDefault(currentUserDocument?.address, ''),
+                      style: FlutterFlowTheme.of(context).subtitle2.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).subtitle2Family,
+                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).subtitle2Family),
+                          ),
+                    ).animated([animationsMap['textOnPageLoadAnimation2']!]),
+                  ),
                 ),
                 Divider(
                   height: 44,

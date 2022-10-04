@@ -6,6 +6,7 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class CartWidget extends StatefulWidget {
   const CartWidget({Key? key}) : super(key: key);
@@ -21,73 +22,6 @@ class _CartWidgetState extends State<CartWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(120),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 50,
-                        icon: Icon(
-                          Icons.arrow_back_rounded,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 30,
-                        ),
-                        onPressed: () async {
-                          context.pop();
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'fccpeh5e' /* Back */,
-                        ),
-                        style: FlutterFlowTheme.of(context).title1.override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).title1Family,
-                              fontSize: 16,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).title1Family),
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      'lq3h2ooh' /* Cart */,
-                    ),
-                    style: FlutterFlowTheme.of(context).title1,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          actions: [],
-          elevation: 0,
-        ),
-      ),
       backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -114,214 +48,170 @@ class _CartWidgetState extends State<CartWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Builder(
-                        builder: (context) {
-                          final cartItems = FFAppState().Cart.toList();
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            primary: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: cartItems.length,
-                            itemBuilder: (context, cartItemsIndex) {
-                              final cartItemsItem = cartItems[cartItemsIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16, 8, 16, 0),
-                                child: StreamBuilder<VegetablesRecord>(
-                                  stream: VegetablesRecord.getDocument(
-                                      cartItemsItem),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                        child: GradientText(
+                          FFLocalizations.of(context).getText(
+                            'mwia8r7s' /* Your Cart items */,
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Acme',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                fontSize: 30,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
+                              ),
+                          colors: [
+                            Color(0xFFBCB013),
+                            FlutterFlowTheme.of(context).primaryBtnText
+                          ],
+                          gradientDirection: GradientDirection.ltr,
+                          gradientType: GradientType.linear,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                        child: Builder(
+                          builder: (context) {
+                            final cartItems = FFAppState().Cart.toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: cartItems.length,
+                              itemBuilder: (context, cartItemsIndex) {
+                                final cartItemsItem = cartItems[cartItemsIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: StreamBuilder<VegetablesRecord>(
+                                    stream: VegetablesRecord.getDocument(
+                                        cartItemsItem),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
                                           ),
+                                        );
+                                      }
+                                      final containerVegetablesRecord =
+                                          snapshot.data!;
+                                      return Container(
+                                        width: double.infinity,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4,
+                                              color: Color(0x320E151B),
+                                              offset: Offset(0, 1),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                         ),
-                                      );
-                                    }
-                                    final containerVegetablesRecord =
-                                        snapshot.data!;
-                                    return Container(
-                                      width: double.infinity,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 4,
-                                            color: Color(0x320E151B),
-                                            offset: Offset(0, 1),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16, 8, 8, 8),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              flex: 1,
-                                              child: Hero(
-                                                tag: containerVegetablesRecord
-                                                    .image!,
-                                                transitionOnUserGestures: true,
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                  child: Image.network(
-                                                    containerVegetablesRecord
-                                                        .image!,
-                                                    width: 80,
-                                                    height: 80,
-                                                    fit: BoxFit.fitWidth,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16, 8, 8, 8),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                flex: 1,
+                                                child: Hero(
+                                                  tag: containerVegetablesRecord
+                                                      .image!,
+                                                  transitionOnUserGestures:
+                                                      true,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
+                                                    child: Image.network(
+                                                      containerVegetablesRecord
+                                                          .image!,
+                                                      width: 80,
+                                                      height: 80,
+                                                      fit: BoxFit.fitWidth,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              flex: 2,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(12, 0, 0, 0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 0, 0, 8),
-                                                      child: Text(
-                                                        containerVegetablesRecord
-                                                            .name!,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .subtitle2
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .subtitle2Family,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryColor,
-                                                                  fontSize: 14,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .subtitle2Family),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Icon(
-                                                          FFIcons.krupee,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          size: 14,
-                                                        ),
-                                                        Text(
+                                              Expanded(
+                                                flex: 2,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(12, 0, 0, 0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 0, 8),
+                                                        child: Text(
                                                           containerVegetablesRecord
-                                                              .amount!
-                                                              .toString(),
+                                                              .name!,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText2
+                                                              .subtitle2
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText2Family,
+                                                                    .subtitle2Family,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
+                                                                fontSize: 14,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
+                                                                            .subtitle2Family),
                                                               ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'sj2u13ab' /* Total in Rs: */,
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Icon(
+                                                            FFIcons.krupee,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryColor,
+                                                            size: 14,
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1Family,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyText1Family),
-                                                              ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      8, 0, 0),
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              formatNumber(
-                                                                functions.prodTotal(
-                                                                    containerVegetablesRecord
-                                                                        .amount!,
-                                                                    containerVegetablesRecord
-                                                                        .minCount!),
-                                                                formatType:
-                                                                    FormatType
-                                                                        .decimal,
-                                                                decimalType:
-                                                                    DecimalType
-                                                                        .periodDecimal,
-                                                              ),
-                                                              'itemPriceTotal',
-                                                            ),
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                          Text(
+                                                            containerVegetablesRecord
+                                                                .amount!
+                                                                .toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyText2
@@ -331,7 +221,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                                       .bodyText2Family,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .secondaryColor,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
@@ -339,55 +229,179 @@ class _CartWidgetState extends State<CartWidget> {
                                                                               .bodyText2Family),
                                                                 ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'sj2u13ab' /* Total in Rs: */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1Family,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryColor,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyText1Family),
+                                                                ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0,
+                                                                        8,
+                                                                        0,
+                                                                        0),
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                formatNumber(
+                                                                  functions.prodTotal(
+                                                                      containerVegetablesRecord
+                                                                          .amount!,
+                                                                      containerVegetablesRecord
+                                                                          .minCount!),
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .decimal,
+                                                                  decimalType:
+                                                                      DecimalType
+                                                                          .periodDecimal,
+                                                                ),
+                                                                'itemPriceTotal',
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyText2Family,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyText2Family),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              flex: 2,
-                                              child: Stack(
-                                                children: [
-                                                  if (FFAppState()
-                                                          .isEditBtnTapped ==
-                                                      false)
-                                                    FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
-                                                      borderRadius: 30,
-                                                      borderWidth: 1,
-                                                      buttonSize: 40,
-                                                      icon: Icon(
-                                                        Icons.edit_outlined,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 20,
+                                              Expanded(
+                                                flex: 2,
+                                                child: Stack(
+                                                  children: [
+                                                    if (FFAppState()
+                                                            .isEditBtnTapped ==
+                                                        false)
+                                                      FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 30,
+                                                        borderWidth: 1,
+                                                        buttonSize: 40,
+                                                        icon: Icon(
+                                                          Icons.edit_outlined,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 20,
+                                                        ),
+                                                        onPressed: () async {
+                                                          setState(() =>
+                                                              FFAppState()
+                                                                      .isEditBtnTapped =
+                                                                  true);
+                                                        },
                                                       ),
-                                                      onPressed: () async {
-                                                        setState(() => FFAppState()
-                                                                .isEditBtnTapped =
-                                                            true);
-                                                      },
-                                                    ),
-                                                  if (FFAppState()
-                                                          .isEditBtnTapped ==
-                                                      true)
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: [
-                                                        if (random_data
-                                                                .randomInteger(
-                                                                    0, 1000) !=
-                                                            containerVegetablesRecord
-                                                                .minCount)
+                                                    if (FFAppState()
+                                                            .isEditBtnTapped ==
+                                                        true)
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          if (random_data
+                                                                  .randomInteger(
+                                                                      0,
+                                                                      1000) !=
+                                                              containerVegetablesRecord
+                                                                  .minCount)
+                                                            Expanded(
+                                                              child:
+                                                                  FlutterFlowIconButton(
+                                                                borderColor: Colors
+                                                                    .transparent,
+                                                                borderRadius:
+                                                                    30,
+                                                                borderWidth: 1,
+                                                                buttonSize: 60,
+                                                                icon: Icon(
+                                                                  Icons.remove,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  size: 20,
+                                                                ),
+                                                                onPressed: () {
+                                                                  print(
+                                                                      'IconButton pressed ...');
+                                                                },
+                                                              ),
+                                                            ),
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'zlpe1qm4' /*  */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1,
+                                                              ),
+                                                            ),
+                                                          ),
                                                           Expanded(
                                                             child:
                                                                 FlutterFlowIconButton(
@@ -397,7 +411,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                               borderWidth: 1,
                                                               buttonSize: 60,
                                                               icon: Icon(
-                                                                Icons.remove,
+                                                                Icons.add,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -409,87 +423,48 @@ class _CartWidgetState extends State<CartWidget> {
                                                               },
                                                             ),
                                                           ),
-                                                        Expanded(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child: Text(
-                                                              containerVegetablesRecord
-                                                                  .minCount!
-                                                                  .toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          child:
-                                                              FlutterFlowIconButton(
-                                                            borderColor: Colors
-                                                                .transparent,
-                                                            borderRadius: 30,
-                                                            borderWidth: 1,
-                                                            buttonSize: 60,
-                                                            icon: Icon(
-                                                              Icons.add,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              size: 20,
-                                                            ),
-                                                            onPressed: () {
-                                                              print(
-                                                                  'IconButton pressed ...');
-                                                            },
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(20, 0, 0, 0),
-                                                child: FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 30,
-                                                  borderWidth: 1,
-                                                  buttonSize: 40,
-                                                  icon: Icon(
-                                                    Icons
-                                                        .delete_outline_rounded,
-                                                    color: Color(0xFFE86969),
-                                                    size: 20,
-                                                  ),
-                                                  onPressed: () async {
-                                                    setState(() => FFAppState()
-                                                        .removeFromCart(
-                                                            containerVegetablesRecord
-                                                                .reference));
-                                                  },
+                                                        ],
+                                                      ),
+                                                  ],
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Expanded(
+                                                flex: 1,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 0, 0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 30,
+                                                    borderWidth: 1,
+                                                    buttonSize: 40,
+                                                    icon: Icon(
+                                                      Icons
+                                                          .delete_outline_rounded,
+                                                      color: Color(0xFFE86969),
+                                                      size: 20,
+                                                    ),
+                                                    onPressed: () async {
+                                                      setState(() => FFAppState()
+                                                          .removeFromCart(
+                                                              containerVegetablesRecord
+                                                                  .reference));
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          );
-                        },
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 4),
@@ -632,16 +607,39 @@ class _CartWidgetState extends State<CartWidget> {
                   ),
                 ),
                 alignment: AlignmentDirectional(0, -0.35),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    'kij1nqms' /* Checkout ($230.20) */,
-                  ),
-                  style: FlutterFlowTheme.of(context).title2.override(
-                        fontFamily: FlutterFlowTheme.of(context).title2Family,
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).title2Family),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'kij1nqms' /* Confirm Order */,
                       ),
+                      style: FlutterFlowTheme.of(context).title2.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).title2Family,
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).title2Family),
+                          ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          '06rm6rgn' /* Rs 250 */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyText1Family,
+                              color:
+                                  FlutterFlowTheme.of(context).primaryBtnText,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyText1Family),
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
